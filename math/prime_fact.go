@@ -31,6 +31,28 @@ func prime_factors(n int) {
 	}
 }
 
+func primeFactors(n int) {
+    // 1. Handle the number of 2s
+    for n%2 == 0 {
+        fmt.Print(2, " ")
+        n /= 2
+    }
+
+    // 2. n must be odd at this point. 
+    // We only need to check up to sqrt(n)
+    for i := 3; i*i <= n; i += 2 {
+        for n%i == 0 {
+            fmt.Print(i, " ")
+            n /= i
+        }
+    }
+
+    // 3. If n is still > 2, then n is a prime number
+    if n > 2 {
+        fmt.Print(n)
+    }
+}
+
 func main() {
 	fmt.Println("Enter a number")
 	a := 0
